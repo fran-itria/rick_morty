@@ -1,0 +1,30 @@
+.input{
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+}
+.input:current{
+    background: red;
+}
+.button{
+    width: 75px;
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+    border-top: green solid 5px;
+    background-color: greenyellow;
+    margin-left: 10px;
+    font-weight: bold;
+
+}
+.button:hover{
+    cursor: pointer;
+}
+.button:active{
+    width: 75px;
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+    border-top: green solid 3px;
+    background-color: greenyellow;
+}

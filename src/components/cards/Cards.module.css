@@ -1,0 +1,18 @@
+.contenedor{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: fit-content;
+}
+
+.list{
+    background-color: wheat;
+    display: flex;
+    list-style: none;
+    columns: 3;
+}

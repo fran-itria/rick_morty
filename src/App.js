@@ -1,25 +1,77 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react'
+import './App.css'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import Cards from './components/cards/Cards.jsx'
+import Nav from "./components/nav/Nav.jsx";
+import About from './components/about/About';
+import Detail from './components/detail/Detail.jsx'
+import Form from './components/form/Form';
 
 function App() {
+  const [characters, setCharacters] = useState([])
+  const [access, setAccess] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const username = 'franco08river@gmail.com'
+  const password = 'pepito20'
+
+  // function found(characterId) {
+  //   let boolean
+  //   for (const element of characters) {
+  //     if (typeof (element) == 'object' && !Array.isArray(element)) {
+  //       if (element.id == characterId) {
+  //         boolean = true
+  //         break;
+  //       }
+  //     }
+  //   }
+  //   if (!boolean) boolean = false
+  //   return boolean
+  // }
+  // let boolean = found(characterId)
+  // !boolean ? : window.alert('Character ya buscado')
+
+  function onSearch(characterId) {
+    const URL_BASE = "https://be-a-rym.up.railway.app/api";
+    const KEY = '179180d9d086.4e91a167f3c86bcbbb24';
+    fetch(`${URL_BASE}/character/${characterId}?key=${KEY}`)
+        .then(res => res.json())
+        .then(data => {
+          (data.name && !characters.find((char) => char.id === data.id)) ?
+            setCharacters((oldCharacters) => [...oldCharacters, data])
+            : window.alert('There is no character with that id')
+        })
+  }
+  function onClose(id) {
+    setCharacters(characters.filter((character) => character.id != id))
+  }
+  function login(userData){
+    if(userData.password == password && userData.username == username){
+      setAccess(true)
+      navigate('/about')
+    } else window.alert('Correo o contraseña incorrectos')
+  }
+  useEffect(() => {
+    !access && navigate('/');
+ }, [access]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+        {location.pathname != '/' ? 
+          <Nav onSearch={onSearch} />
+          :
+          <Form login={login}/>
+        }
+      <Routes>
+        <Route path='/home' element={<Cards
+          characters={characters}
+          onClose={onClose}
+        />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/detail/:id' element={<Detail />} />
+      </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

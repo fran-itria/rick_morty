@@ -1,0 +1,125 @@
+.conteiner {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.introduction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes p {
+    from {
+        border-radius: none;
+    }
+
+    to {
+        border-radius: 0 0 40% 40%;
+    }
+}
+
+.p {
+    background: rgb(164, 252, 255);
+    width: 100vh;
+    animation-name: p;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+.name {
+    color: white;
+    text-shadow: 3px 1px red;
+}
+
+.information {
+    display: flex;
+    justify-content: space-around;
+}
+
+.list {
+    color: rgb(0, 0, 0);
+    list-style: none;
+}
+
+.item {
+    width: fit-content;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.subTitle {
+    padding: 5px;
+    font-size: 30px;
+    background-color: rgb(165, 255, 165);
+    border: red solid 2px;
+    border-radius: 0px 0px 20px 0px;
+}
+
+.text {
+    margin-left: 5px;
+    font-size: 30px;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: -2px 0px rgb(255, 127, 127);
+    text-decoration: underline rgb(0, 238, 255) 2px;
+}
+
+.image {
+    border-radius: 100%;
+    box-shadow: 30px 0px rgb(6, 63, 0);
+}
+
+.button {
+    margin-top: 100px;
+}
+
+@keyframes button {
+
+    /* 0% {background: white;}
+    25% {background: rgb(255, 203, 203);}
+    50% {background: rgb(255, 93, 93);}
+    100% {background: rgb(255, 49, 49);} */
+    /* to {
+        background: rgb(255, 70, 70);
+        color: rgb(255, 255, 255);
+        box-shadow: -3px 3px rgb(255, 255, 255);
+        border-radius: 0px 0px 0px 0px;
+    } */
+}
+
+.volver {
+    width: fit-content;
+    font-size: 30px;
+    border: none;
+    border-radius: 0px 20px 0px 20px;
+    background: white;
+    color: red;
+    box-shadow: -5px 5px red;
+    transition: 1s;
+    /* animation-name: buttonBack;
+    animation-duration: 1s;
+    animation-fill-mode: forwards; */
+}
+
+.volver:hover {
+    cursor: pointer;
+    border-radius: 0px 0px 0px 0px;
+    background: rgb(255, 70, 70);
+    color: rgb(255, 255, 255);
+    box-shadow: -3px 5px rgb(255, 255, 255);
+    transition: 1s;
+    /* animation-name: button;
+    animation-duration: 1s;
+    animation-fill-mode: forwards; */
+}
+
+.volver:active{
+    border-radius: 0px 0px 0px 0px;
+    background: rgb(196, 0, 0);
+    box-shadow: 0px 0px rgb(255, 255, 255);
+    transition: 0.5s;
+}

@@ -1,0 +1,39 @@
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes about {
+    from {
+        border-left: 0px solid rgb(197, 139, 255);
+        border-right: 0px solid rgb(54, 0, 107);
+        border-radius: 0px 50px 50px 0px;
+    }
+    
+    to {
+        border-left: 15px solid rgb(197, 139, 255);
+        border-right: 15px solid rgb(54, 0, 107);
+        border-radius: 0px 50px 50px 0px;
+    }
+}
+
+.information {
+    /* border-radius: 0px 50px 50px 0px;
+    border-top: 15px solid rgb(197, 139, 255);
+    border-bottom: 15px solid rgb(197, 139, 255);
+    box-shadow: -15px 0px rgb(197, 139, 255); */
+    background: white;
+    border: none;
+    border-left: 15px solid rgb(197, 139, 255);
+    border-right: 15px solid rgb(54, 0, 107);
+    animation-name: about;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.p {
+    width: 50vw;
+}

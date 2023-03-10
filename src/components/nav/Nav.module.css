@@ -1,0 +1,30 @@
+.navBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.search{
+    position: absolute;
+    right: 0;
+}
+.about{
+    margin-right: 10px;
+}
+.home{
+    margin-left: 10px;
+}
+.active{
+    text-decoration: underline 3px red;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    transition: 0.5s;
+}
+.disable{
+    text-decoration: none;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    transition: 1s;
+}
