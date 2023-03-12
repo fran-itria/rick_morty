@@ -14,6 +14,9 @@
 .home{
     margin-left: 10px;
 }
+.favorites{
+    margin-left: 10px;
+}
 .active{
     text-decoration: underline 3px red;
     color: white;

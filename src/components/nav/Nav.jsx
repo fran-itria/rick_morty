@@ -13,6 +13,9 @@ export default function Nav({ onSearch }) {
             <div  className={style.home}>
                 <NavLink to='/home' className={({ isActive }) => isActive ? style.active : style.disable}>Home</NavLink>
             </div>
+            <div  className={style.favorites}>
+                <NavLink to='/favorites' className={({ isActive }) => isActive ? style.active : style.disable}>Favorites</NavLink>
+            </div>
             <div className={style.search}>
                 <SearchBar onSearch={onSearch} />
             </div>

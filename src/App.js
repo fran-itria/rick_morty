@@ -6,14 +6,17 @@ import Nav from "./components/nav/Nav.jsx";
 import About from './components/about/About';
 import Detail from './components/detail/Detail.jsx'
 import Form from './components/form/Form';
+import Favorites from "./components/favorites/Favorites";
 
 function App() {
   const [characters, setCharacters] = useState([])
   const [access, setAccess] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
-  const username = 'franco08river@gmail.com'
-  const password = 'pepito20'
+  // const username = 'franco08river@gmail.com'
+  // const password = 'pepito20'
+  const username = ''
+  const password = ''
 
   // function found(characterId) {
   //   let boolean
@@ -69,6 +72,7 @@ function App() {
         />} />
         <Route path='/about' element={<About />} />
         <Route path='/detail/:id' element={<Detail />} />
+        <Route path='/favorites' element={<Favorites />}/>
       </Routes>
     </div>
   )

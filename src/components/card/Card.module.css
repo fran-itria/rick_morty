@@ -43,7 +43,6 @@
     margin-top: 5px;
     margin-right: 5px;
     opacity: 0.8;
-    transition: 0.5s;
 }
 
 .close:hover {
@@ -51,6 +50,18 @@
     background: rgb(189, 0, 0);
     border: none;
     border-radius: 100%;
+    transition: 0.5s;
+}
+
+.favorite{
+    font-size: 20px;
+    color: red;
+    background: none;
+    border: none;
+    font-weight: bold;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
 .name {
