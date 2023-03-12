@@ -35,33 +35,33 @@ function App() {
     const URL_BASE = "https://be-a-rym.up.railway.app/api";
     const KEY = '179180d9d086.4e91a167f3c86bcbbb24';
     fetch(`${URL_BASE}/character/${characterId}?key=${KEY}`)
-        .then(res => res.json())
-        .then(data => {
-          (data.name && !characters.find((char) => char.id === data.id)) ?
-            setCharacters((oldCharacters) => [...oldCharacters, data])
-            : window.alert('There is no character with that id')
-        })
+      .then(res => res.json())
+      .then(data => {
+        (data.name && !characters.find((char) => char.id === data.id)) ?
+          setCharacters((oldCharacters) => [...oldCharacters, data])
+          : window.alert('There is no character with that id')
+      })
   }
   function onClose(id) {
     setCharacters(characters.filter((character) => character.id != id))
   }
-  function login(userData){
-    if(userData.password == password && userData.username == username){
+  function login(userData) {
+    if (userData.password == password && userData.username == username) {
       setAccess(true)
       navigate('/about')
     } else window.alert('Correo o contraseña incorrectos')
   }
   useEffect(() => {
     !access && navigate('/');
- }, [access]);
+  }, [access]);
 
   return (
     <div className='App'>
-        {location.pathname != '/' ? 
-          <Nav onSearch={onSearch} />
-          :
-          <Form login={login}/>
-        }
+      {location.pathname != '/' ?
+        <Nav onSearch={onSearch} />
+        :
+        <Form login={login} />
+      }
       <Routes>
         <Route path='/home' element={<Cards
           characters={characters}

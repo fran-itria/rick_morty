@@ -27,7 +27,7 @@ export default function Form({ login }) {
                         {errors.username && <p className={style.warning}>¡{errors.username}!</p>}
                         <label className={style.label}>Username:</label>
                         <input
-                            className={style.input}
+                            className={errors.username ? style.danger : style.input}
                             value={inputs.username}
                             name='username'
                             onChange={handleChange}>
@@ -37,7 +37,7 @@ export default function Form({ login }) {
                         {errors.password && <p className={style.warning}>¡{errors.password}!</p>}
                         <label className={style.label}>Password:</label>
                         <input
-                            className={style.input}
+                            className={errors.password ? style.danger : style.input}
                             value={inputs.password}
                             type='password'
                             name='password'

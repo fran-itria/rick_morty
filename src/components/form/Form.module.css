@@ -1,10 +1,11 @@
-.conteiner{
+.conteiner {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.form{
+
+.form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -17,7 +18,8 @@
     border: solid 3px black;
     box-shadow: 20px -20px rgb(255, 255, 255);
 }
-.inputs{
+
+.inputs {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -28,22 +30,30 @@
     border-radius: 50px 50px 0px 0px;
     padding: 20px;
 }
-.label{
+
+.label {
     margin-right: 10px;
     color: black;
     font-weight: bolder;
     font-style: oblique;
     font-family: cursive;
 }
-.input{
-    border: none;
+
+.input {
+    border: rgb(0, 208, 0) solid 2px;
     border-radius: 10px;
     font-weight: bold;
     background: rgb(58, 58, 58);
     color: white;
     outline: none;
 }
-.button{
+
+.danger {
+    background: white;
+    border: red solid 2px
+}
+
+.button {
     margin-bottom: 20px;
     background: rgb(50, 115, 255);
     color: white;
@@ -53,15 +63,17 @@
     width: 8vh;
     border-radius: 100%
 }
-.button:hover{
+
+.button:hover {
     cursor: pointer;
     background: rgb(0, 81, 255)
 }
-.button:active{
+
+.button:active {
     background: rgb(0, 53, 167)
 }
 
-.disabled{
+.disabled {
     pointer-events: none;
     margin-bottom: 20px;
     background: rgb(50, 115, 255);
@@ -74,7 +86,7 @@
     opacity: 0.5;
 }
 
-.warning{
+.warning {
     color: rgb(255, 0, 0);
     font-weight: bold;
     font-size: 12px;
