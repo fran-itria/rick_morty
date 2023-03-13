@@ -27,14 +27,14 @@ function Card(props) {
 
    return (
       <div className={style.card}>
-            {
-               isFav ? (
-                  <button onClick={handleFavorite} className={style.favorite}>❤️</button>
-               ) : (
-                  <button onClick={handleFavorite} className={style.favorite}>🤍</button>
-               )
-            }
-            <button className={style.close} onClick={() => props.onClose(props.id)}>X</button>
+         {
+            isFav ? (
+               <button onClick={handleFavorite} className={style.favorite}>❤️</button>
+            ) : (
+               <button onClick={handleFavorite} className={style.favorite}>🤍</button>
+            )
+         }
+         <button className={style.close} onClick={() => props.onClose(props.id)}>X</button>
          <img className={style.image} src={props.image} alt="" />
          <div className={style.name}>
             <div className={style.text}>
@@ -52,7 +52,7 @@ function Card(props) {
 }
 
 
-export function mapStateToProps(state){
+export function mapStateToProps(state) {
    return {
       myFavorites: state.myFavorites
    }
@@ -60,8 +60,8 @@ export function mapStateToProps(state){
 
 export function mapDispatchToProps(dispatch) {
    return {
-      addFavorite: (character) => { dispatch(addFavorite(character)) },
-      removeFavorite: (id) => { dispatch(removeFavorite(id)) }
+      addFavorite: (character) => dispatch(addFavorite(character)),
+      removeFavorite: (id) => dispatch(removeFavorite(id))
    }
 }
 

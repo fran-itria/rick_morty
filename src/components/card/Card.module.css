@@ -53,11 +53,11 @@
     transition: 0.5s;
 }
 
-.favorite{
+.favorite {
     font-size: 20px;
     color: red;
     background: none;
-    border: none;
+    border: solid black 2px;
     font-weight: bold;
     position: absolute;
     margin-top: 5px;
@@ -80,7 +80,8 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-decoration: none;
 }
-.link{
+
+.link {
     text-decoration: none;
     color: black;
     font-size: 10px;
