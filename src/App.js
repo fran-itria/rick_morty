@@ -7,32 +7,19 @@ import About from './components/about/About';
 import Detail from './components/detail/Detail.jsx'
 import Form from './components/form/Form';
 import Favorites from "./components/favorites/Favorites";
+import { useDispatch } from 'react-redux';
+import { removeFavorite } from './components/redux/actions';
 
 function App() {
   const [characters, setCharacters] = useState([])
   const [access, setAccess] = useState(false)
+  const dispatch = useDispatch()
   const location = useLocation()
   const navigate = useNavigate()
   // const username = 'franco08river@gmail.com'
   // const password = 'pepito20'
   const username = ''
   const password = ''
-
-  // function found(characterId) {
-  //   let boolean
-  //   for (const element of characters) {
-  //     if (typeof (element) == 'object' && !Array.isArray(element)) {
-  //       if (element.id == characterId) {
-  //         boolean = true
-  //         break;
-  //       }
-  //     }
-  //   }
-  //   if (!boolean) boolean = false
-  //   return boolean
-  // }
-  // let boolean = found(characterId)
-  // !boolean ? : window.alert('Character ya buscado')
 
   function onSearch(characterId) {
     const URL_BASE = "https://be-a-rym.up.railway.app/api";
@@ -47,6 +34,8 @@ function App() {
   }
   function onClose(id) {
     setCharacters(characters.filter((character) => character.id != id))
+    dispatch(removeFavorite(id))
+
   }
   function login(userData) {
     if (userData.password == password && userData.username == username) {

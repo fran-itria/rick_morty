@@ -6,9 +6,9 @@ export default function Cards({ characters, onClose }) {
    return (
       <div className={style.contenedor}>
          <div className={style.cards}>
-            {characters.map((character, index) => {
+            {characters.map((character) => {
                return <Card
-                  key={`${character.name} esta en ${index}`}
+                  key={character.id}
                   name={character.name}
                   species={character.species}
                   gender={character.gender}
