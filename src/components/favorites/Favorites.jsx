@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { connect, useDispatch, useSelector } from "react-redux"
 import Card from "../card/Card"
-import { filterCards, orderCards} from "../redux/actions"
+import { filterCards, orderCards, removeFavorite } from "../redux/actions"
 import style from './Favorites.module.css'
 
 // export default 
@@ -14,6 +14,9 @@ export default function Favorites(props) {
     }
     const order = (event) => {
         dispatch(orderCards(event.target.value))
+    }
+    const remove = (id) => {
+        dispatch(removeFavorite(id))
     }
 
     return (
@@ -39,11 +42,12 @@ export default function Favorites(props) {
                     </select>
                 </div>
             </div>
-            
+
             {/* FAVORITE CHARACTER */}
             {favorites && favorites.map(character => {
                 return <div className={style.container} key={character.id}>
                     <div className={style.information}>
+                        <button onClick={() => remove(character.id)} className={style.fav}>❤️</button>
                         <div className={style.texts}>
                             <h2 className={style.name}>{character.name}</h2>
                             <h2 className={style.specie}>{character.species}</h2>

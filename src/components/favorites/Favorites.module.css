@@ -28,6 +28,15 @@
     opacity: 1;
 }
 
+.fav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: none;
+    border: none;
+    font-size: 20px;
+}
+
 .texts{
     margin: 20px;
     background-color: rgb(177, 255, 177);
