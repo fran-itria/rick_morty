@@ -1,34 +1,23 @@
-.card {
-    background-color: rgb(175, 88, 88);
-    /* margin-top: 20px; */
-    margin-top: 50px;
-    margin-left: 80px;
-    margin-right: 0px;
-    height: fit-content;
-    position: relative;
-    box-shadow: 10px 10px rgb(255, 102, 102);
-    transition: 0.5s
+.padre{
+    display: flex;
+    justify-content: center;
 }
 
-/* @keyframes cardHover {
-    from {
-        box-shadow: 10px 10px rgb(255, 102, 102);
-    }
+.card {
+    background-color: rgb(175, 88, 88);
+    height: fit-content;
+    position: relative;
+    width: fit-content;
+    box-shadow: 10px 10px rgb(255, 102, 102);
+    transition: 0.5s;
+    margin-bottom: 10px;
+}
 
-    to {
-        border: solid rgb(0, 0, 0);
-        border-radius: 0px 0px 20px 20px;
-        box-shadow: 0px 0px 50PX green;
-    }
-} */
 .card:hover {
     border: solid rgb(0, 0, 0);
     border-radius: 0px 0px 20px 20px;
     box-shadow: 0px 0px 50PX green;
     transition: box-shadow 1s, border-radius 1s;
-    /* animation-name: cardHover;
-    animation-duration: 0.5s;
-    animation-timing-function: linear; */
 }
 
 .close {
@@ -71,7 +60,6 @@
 
 .text {
     margin: 0;
-    /* font-size: 20px; */
     position: absolute;
     bottom: 72px;
     background-color: white;

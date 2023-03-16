@@ -1,4 +1,6 @@
+
 .navBar{
+    /* margin-top: 10px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,16 +8,20 @@
 }
 .search{
     position: absolute;
-    right: 0;
+    right: 20px;
+    /* top: 10px; */
+    margin-top: 10px;
 }
 .about{
-    margin-right: 10px;
+    margin-top: 10px;
 }
 .home{
-    margin-left: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 .favorites{
-    margin-left: 10px;
+    margin-top: 10px;
 }
 .active{
     text-decoration: underline 3px red;

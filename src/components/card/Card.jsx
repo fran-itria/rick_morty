@@ -37,26 +37,28 @@ function Card({ name, species, id, gender, image, onClose, addFavorite, removeFa
    }, [myFavorites]);
 
    return (
-      <div className={style.card}>
-         {
-            isFav ? (
-               <button onClick={handleFavorite} className={style.favorite}>❤️</button>
-            ) : (
-               <button onClick={handleFavorite} className={style.favorite}>🤍</button>
-            )
-         }
-         <button className={style.close} onClick={() => onClose(id)}>X</button>
-         <img className={style.image} src={image} alt="" />
-         <div className={style.name}>
-            <div className={style.text}>
-               <Link to={`/detail/${id}`} className={style.link}>
-                  <h2>{name}</h2>
-               </Link>
+      <div className={style.padre}>
+         <div className={style.card}>
+            {
+               isFav ? (
+                  <button onClick={handleFavorite} className={style.favorite}>❤️</button>
+               ) : (
+                  <button onClick={handleFavorite} className={style.favorite}>🤍</button>
+               )
+            }
+            <button className={style.close} onClick={() => onClose(id)}>X</button>
+            <img className={style.image} src={image} alt="" />
+            <div className={style.name}>
+               <div className={style.text}>
+                  <Link to={`/detail/${id}`} className={style.link}>
+                     <h2>{name}</h2>
+                  </Link>
+               </div>
             </div>
-         </div>
-         <div className={style.information}>
-            <h2 className={style.specie}>{species}</h2>
-            <h2 className={style.gender}>{gender}</h2>
+            <div className={style.information}>
+               <h2 className={style.specie}>{species}</h2>
+               <h2 className={style.gender}>{gender}</h2>
+            </div>
          </div>
       </div>
    );
@@ -76,16 +78,16 @@ const mapDispatchToProps = (dispatch) => {
    }
 }
 
-/* const mapDispatchToProps = (dispatch) => {
-   return {
-      addFavorite: (character) => {
-         dispatch(addFavorite(character));
-      },
-      removeFavorite: (id) => {
-         dispatch(removeFavorite(id));
-      }
-   }
-} */
+// const mapDispatchToProps = (dispatch) => {
+//    return {
+//       addFavorite: (character) => {
+//          dispatch(addFavorite(character));
+//       },
+//       removeFavorite: (id) => {
+//          dispatch(removeFavorite(id));
+//       }
+//    }
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card)
 
