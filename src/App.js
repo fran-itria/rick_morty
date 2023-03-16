@@ -14,7 +14,7 @@ function App() {
   const [characters, setCharacters] = useState([])
   const [access, setAccess] = useState(false)
   const dispatch = useDispatch()
-  const location = useLocation()
+  const { pathname } = useLocation()
   const navigate = useNavigate()
   // const username = 'franco08river@gmail.com'
   // const password = 'pepito20'
@@ -49,13 +49,13 @@ function App() {
 
   return (
     <div className='App'>
-      {location.pathname != '/' ?
+      {pathname !== '/' ?
         <Nav onSearch={onSearch} />
         :
         <Form login={login} />
       }
       <Routes>
-        <Route path='/home' element={<Cards
+        <Route path='/cards' element={<Cards
           characters={characters}
           onClose={onClose}
         />} />
