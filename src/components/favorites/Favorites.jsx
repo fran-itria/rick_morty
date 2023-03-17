@@ -1,10 +1,8 @@
 import { useEffect } from "react"
 import { connect, useDispatch, useSelector } from "react-redux"
-import Card from "../card/Card"
 import { filterCards, orderCards, removeFavorite } from "../redux/actions"
 import style from './Favorites.module.css'
 
-// export default 
 export default function Favorites(props) {
     const dispatch = useDispatch()
     const favorites = useSelector(state => state.myFavorites)
@@ -24,13 +22,6 @@ export default function Favorites(props) {
             {/* FILTER AND ORDER */}
             <h1 className={style.h1}>List of your favorite Rick and Morty characters</h1>
             <div className={style.options}>
-                <p className={style.p}>Seleccionar orden:</p>
-                <div className={style.contentSelect}>
-                    <select name="" onChange={(event) => order(event)} className={style.select}>
-                        <option value='Ascendente'>Ascendente</option>
-                        <option value='Descendente'>Descendente</option>
-                    </select>
-                </div>
                 <p className={style.p}>Seleccionar gender:</p>
                 <div className={style.contentSelect}>
                     <select name="" onChange={(event) => filter(event)} className={style.select}>
@@ -39,6 +30,14 @@ export default function Favorites(props) {
                         <option value='Female'>Female</option>
                         <option value='Genderless'>Genderless</option>
                         <option value='unknown'>unknown</option>
+                    </select>
+                </div>
+                <p className={style.p}>Seleccionar orden:</p>
+                <div className={style.contentSelect}>
+                    <select name="" onChange={(event) => order(event)} className={style.select}>
+                        <option value='Default'>Default</option>
+                        <option value='Ascendente'>Ascendente</option>
+                        <option value='Descendente'>Descendente</option>
                     </select>
                 </div>
             </div>

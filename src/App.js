@@ -9,59 +9,48 @@ import Form from './components/form/Form';
 import Favorites from "./components/favorites/Favorites";
 import { useDispatch } from 'react-redux';
 import { removeFavorite } from './components/redux/actions';
+import { login, onSearch } from "./functions/functions";
 
 function App() {
   const [characters, setCharacters] = useState([])
   const [access, setAccess] = useState(false)
   const dispatch = useDispatch()
-  const { pathname } = useLocation()
   const navigate = useNavigate()
-  // const username = 'franco08river@gmail.com'
-  // const password = 'pepito20'
-  const username = ''
-  const password = ''
+  const { pathname } = useLocation()
 
-  function onSearch(characterId) {
-    const URL_BASE = "https://be-a-rym.up.railway.app/api";
-    const KEY = '179180d9d086.4e91a167f3c86bcbbb24';
-    fetch(`${URL_BASE}/character/${characterId}?key=${KEY}`)
-      .then(res => res.json())
-      .then(data => {
-        (data.name && !characters.find((char) => char.id === data.id)) ?
-          setCharacters((oldCharacters) => [...oldCharacters, data])
-          : window.alert('There is no character with that id')
-      })
-  }
   function onClose(id) {
     setCharacters(characters.filter((character) => character.id != id))
     dispatch(removeFavorite(id))
+  }
 
-  }
-  function login(userData) {
-    if (userData.password == password && userData.username == username) {
-      setAccess(true)
-      navigate('/about')
-    } else window.alert('Correo o contraseña incorrectos')
-  }
   useEffect(() => {
+    console.log(access)
     !access && navigate('/');
   }, [access]);
 
   return (
     <div className='App'>
       {pathname !== '/' ?
-        <Nav onSearch={onSearch} />
+        <Nav onSearch={onSearch} 
+          characters={characters}
+          setCharacters={setCharacters}
+        />
         :
-        <Form login={login} />
+        <Form login={login}
+          setaccess={setAccess}
+          navigate={navigate}
+        />
       }
       <Routes>
-        <Route path='/cards' element={<Cards
-          characters={characters}
-          onClose={onClose}
-        />} />
+        {characters &&
+          <Route path='/cards' element={<Cards
+            characters={characters}
+            onClose={onClose}
+          />} />
+        }
         <Route path='/about' element={<About />} />
         <Route path='/detail/:id' element={<Detail />} />
-        <Route path='/favorites' element={<Favorites />}/>
+        <Route path='/favorites' element={<Favorites />} />
       </Routes>
     </div>
   )

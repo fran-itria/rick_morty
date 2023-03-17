@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import style from './Form.module.css'
-import validate from './validation'
+import { validate } from '../../functions/functions.js'
 
-export default function Form({ login }) {
+export default function Form({ login, setaccess, navigate }) {
     const [inputs, setInputs] = React.useState({
         username: '',
         password: ''
@@ -17,7 +17,7 @@ export default function Form({ login }) {
         setErrors(validate({ ...inputs, [event.target.name]: event.target.value }))
     }
     function handleSubmit() {
-        login(inputs)
+        login(inputs, setaccess, navigate)
     }
     return (
         <div className={style.conteiner}>

@@ -5,7 +5,7 @@ import { connect, useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 // export default 
-function Card({ name, species, id, gender, image, onClose, addFavorite, removeFavorite, myFavorites }) { //, addFavorite, removeFavorite, myFavorites
+function Card({ name, species, id, gender, image, onClose, addFavorite, removeFavorite, myFavorites}) { //, addFavorite, removeFavorite, myFavorites
    const [isFav, setIsFav] = useState(false)
    // HOOKS
    // const myFavorites = useSelector(state => state.myFavorites)

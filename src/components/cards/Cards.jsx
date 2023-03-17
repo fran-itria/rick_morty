@@ -2,7 +2,7 @@ import Card from '../card/Card';
 import style from './Cards.module.css'
 
 
-export default function Cards({ characters, onClose }) {
+export default function Cards({ characters, onClose}) {
    return (
          <div className={style.contenedor}>
             <div className={style.cards}>
