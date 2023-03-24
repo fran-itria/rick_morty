@@ -1,7 +1,6 @@
 import { ADD_FAVORITE, DETAIL_CHARACTER, FILTER, GET_CHARACTER, ORDER, REMOVE_FAVORITE } from "./actions";
 
 const initialState = {
-    characters: [],
     myFavorites: [],
     allCharacters: [],
     detailCharacter: {},
@@ -27,9 +26,9 @@ const reducer = (state = initialState, { type, payload }) => {
         case DETAIL_CHARACTER:
             return {
                 ...state,
-                detailCharacter: payload.detail,
-                firstEpisode: payload.first,
-                lastEpisode: payload.last
+                detailCharacter: payload,
+                // firstEpisode: payload.first,
+                // lastEpisode: payload.last
             }
         case FILTER:
             if (payload === 'All') {

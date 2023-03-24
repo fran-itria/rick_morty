@@ -5,7 +5,6 @@ import { detailCharacter } from "../redux/actions";
 import style from './Detail.module.css'
 
 export default function Detail() {
-    // const [character, setCharacter] = useState()
     const { id } = useParams()
     const navigate = useNavigate()
     const detail = useSelector(state => state.detailCharacter)
@@ -43,14 +42,22 @@ export default function Detail() {
                         <span className={style.subTitle}>Episodes:</span>
                         <span className={style.text}>{detail.episode?.length}</span>
                     </li>
-                    <li className={style.item}>
-                        <span className={style.subTitle}>First episode: </span>
-                        <span className={style.text}>{first.name}</span>
-                    </li>
-                    <li className={style.item}>
-                        <span className={style.subTitle}>Last episode: </span>
-                        <span className={style.text}>{last.name}</span>
-                    </li>
+                    {first.hasOwnProperty('name') ?
+                        <li className={style.item}>
+                            <span className={style.subTitle}>First episode: </span>
+                            <span className={style.text}>{first.name}</span>
+                        </li>
+                        :
+                        <></>
+                    }
+                    {first.hasOwnProperty('name') ?
+                        <li className={style.item}>
+                            <span className={style.subTitle}>Last episode: </span>
+                            <span className={style.text}>{last.name}</span>
+                        </li>
+                        :
+                        <></>
+                    }
                     <li className={style.item}>
                         <span className={style.subTitle}>Origin:</span>
                         <span className={style.text}>{detail.origin?.name}</span>
