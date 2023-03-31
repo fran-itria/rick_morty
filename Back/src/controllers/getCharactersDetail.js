@@ -1,17 +1,17 @@
 const axios = require('axios')
 
-const URL_BASE = 'https://rickandmortyapi.com/api'
+const URL_BASE = 'https://rickandmortyapi.com/api/character'
 const KEY = '179180d9d086.4e91a167f3c86bcbbb24';
 
-const getCharDetail = (res, id) => {
-    axios(`${URL_BASE}/character/${id}?key=${KEY}`)
+const getCharDetail = (req, res) => {
+    const { id } = req.params
+    axios(`${URL_BASE}/${id}?key=${KEY}`)
         .then(response => {
-            const { name, species, gender, status, origin, image, episode } = response.data
-            res.end(JSON.stringify({ name, species, gender, status, origin, image, episode }))
+            const { id, name, status, episode, species, gender, origin, image } = response.data
+            res.json({ id, name, status, episode, species, gender, origin, image })
         })
-        .catch(reason => {
-            res.writeHead(500, { 'Content-Type': 'text/plain' })
-            res.edn(reason.message)
+        .catch(error => {
+            res.status(500).json({ error: error.message })
         })
 }
 

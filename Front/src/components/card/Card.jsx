@@ -1,29 +1,31 @@
 import { Link } from 'react-router-dom';
 import style from './Card.module.css'
-import { addFavorite, removeFavorite } from "../redux/actions";
+import { getFavorites, removeFavorite } from "../redux/actions";
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import axios from 'axios'
 
 // export default 
-function Card({ name, species, id, gender, image, onClose, addFavorite, removeFavorite, myFavorites}) { //, addFavorite, removeFavorite, myFavorites
+function Card({ name, species, id, gender, image, onClose, myFavorites }) {
    const [isFav, setIsFav] = useState(false)
-   // HOOKS
-   // const myFavorites = useSelector(state => state.myFavorites)
-   // const dispatch = useDispatch()
+   const dispatch = useDispatch()
+
+   const addFavorite = (character) => {
+      axios.post('http://localhost:3001/rickandmorty/fav', character)
+         .then((response) => console.log('ok'))
+   }
+   const removeFavorite = async (id) => {
+      await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
+      dispatch(getFavorites())
+   }
 
    const handleFavorite = () => {
       if (isFav) {
+         console.log('removiendo del servidor')
          setIsFav(false)
-         // CON HOOKS
-         // dispatch(removeFavorite(id))
-         // SIN HOOKS
          removeFavorite(id)
-      }
-      if (!isFav) {
+      } else {
          setIsFav(true)
-         // CON HOOKS
-         // dispatch(addFavorite({name, species, id, gender, image}))
-         // SIN HOOKS
          addFavorite({ name, species, id, gender, image })
       }
    }
@@ -71,23 +73,5 @@ const mapStateToProps = (state) => {
    }
 }
 
-const mapDispatchToProps = (dispatch) => {
-   return {
-      addFavorite: (character) => dispatch(addFavorite(character)),
-      removeFavorite: (id) => dispatch(removeFavorite(id))
-   }
-}
-
-// const mapDispatchToProps = (dispatch) => {
-//    return {
-//       addFavorite: (character) => {
-//          dispatch(addFavorite(character));
-//       },
-//       removeFavorite: (id) => {
-//          dispatch(removeFavorite(id));
-//       }
-//    }
-// }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Card)
+export default connect(mapStateToProps, null)(Card)
 

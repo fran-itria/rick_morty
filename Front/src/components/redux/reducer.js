@@ -1,4 +1,4 @@
-import { ADD_FAVORITE, DETAIL_CHARACTER, FILTER, GET_CHARACTER, ORDER, REMOVE_FAVORITE } from "./actions";
+import { ADD_FAVORITE, CLEAN_DETAIL, DETAIL_CHARACTER, FILTER, GET_CHARACTER, GET_FAV, ORDER, REMOVE_FAVORITE } from "./actions";
 
 const initialState = {
     myFavorites: [],
@@ -30,6 +30,13 @@ const reducer = (state = initialState, { type, payload }) => {
                 // firstEpisode: payload.first,
                 // lastEpisode: payload.last
             }
+        case CLEAN_DETAIL:
+            return {
+                ...state,
+                detailCharacter: {},
+            };
+        case GET_FAV:
+            return { ...state, myFavorites: payload }
         case FILTER:
             if (payload === 'All') {
                 return {

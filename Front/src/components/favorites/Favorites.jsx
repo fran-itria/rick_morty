@@ -1,12 +1,13 @@
 import { useEffect } from "react"
-import { connect, useDispatch, useSelector } from "react-redux"
-import { filterCards, orderCards, removeFavorite } from "../redux/actions"
+import axios from 'axios'
+import { useDispatch, useSelector } from "react-redux"
+import { filterCards, getFavorites, orderCards, removeFavorite } from "../redux/actions"
 import style from './Favorites.module.css'
 
 export default function Favorites(props) {
     const dispatch = useDispatch()
     const favorites = useSelector(state => state.myFavorites)
-
+    
     const filter = (event) => {
         dispatch(filterCards(event.target.value))
     }
@@ -16,7 +17,7 @@ export default function Favorites(props) {
     const remove = (id) => {
         dispatch(removeFavorite(id))
     }
-
+    
     return (
         <div>
             {/* FILTER AND ORDER */}
@@ -62,11 +63,3 @@ export default function Favorites(props) {
         </div>
     )
 }
-
-// export function mapStateToProps(state) {
-//     return {
-//         myFavorites: state.myFavorites
-//     }
-// }
-
-// export default connect(mapStateToProps, null)(Favorites)

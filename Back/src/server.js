@@ -1,17 +1,11 @@
-const http = require('http')
-const getCharByID = require('./controllers/getCharacterById')
-const getCharDetail = require('./controllers/getCharactersDetail')
+const express = require('express')
+const cors = require('cors')
+const router = require('./routes/index')
+const server = express()
+const PORT = 3001
 
-http.createServer((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    const { url } = req
-    if (url.includes('onsearch')) {
-        const id = url.split('/').at(-1)
-        getCharByID(res, id)
-    }
-    if (url.includes('detail')) {
-        const id = url.split('/').at(-1)
-        getCharDetail(res, id)
-    }
-}
-).listen(3001, 'localhost')
+server.use(express.json())
+server.use(cors())
+server.use('/', router)
+
+server.listen(PORT, () => console.log(`Correindo en el puerto ${PORT}`))

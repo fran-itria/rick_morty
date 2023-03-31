@@ -3,11 +3,10 @@ import { DETAIL_CHARACTER } from "../components/redux/actions";
 ////////////////////////////////
 
 // FUNCION SEARCH APP
-const URL_BASE = "http://localhost:3001/rickandmorty";
+const URL_BASE = "http://localhost:3001";
 const KEY = '179180d9d086.4e91a167f3c86bcbbb24';
 
 export function onSearch(characterId, characters, setCharacters) {
-    // const KEY = '179180d9d086.4e91a167f3c86bcbbb24';
     fetch(`${URL_BASE}/onsearch/${characterId}`)
         .then(res => res.json())
         .then(data => {
@@ -39,20 +38,4 @@ export function validate(inputs) {
     if (!inputs.password.match(/\d/)) errors.password = 'Debe contener al menos un numero'
     if (inputs.password.match(/\d/) && (inputs.password.length < 6 || inputs.password.length > 8)) errors.password = 'Debe contener entre 6 y 8 caracteres'
     return errors
-}
-
-////////////////////////////////
-
-// ACTION DETAIL FUNCTION 
-export function restDetail(id) {
-    return async function (dispatch) {
-        const response = await fetch(`${URL_BASE}/detail/${id}`)
-        const detail = await response.json()
-        // const episodeOne = await fetch(`${detail.episode[0]}?key=${KEY}`)
-        // const first = await episodeOne.json()
-        // const episodeFinal = await fetch(`${detail.episode.at(-1)}?key=${KEY}`)
-        // const last = await episodeFinal.json()
-        // dispatch({ type: DETAIL_CHARACTER, payload: { detail, first, last } })
-        dispatch({ type: DETAIL_CHARACTER, payload: detail })
-    }
 }
