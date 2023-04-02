@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux"
 import { filterCards, getFavorites, orderCards, removeFavorite } from "../redux/actions"
@@ -6,12 +6,14 @@ import style from './Favorites.module.css'
 
 export default function Favorites(props) {
     const dispatch = useDispatch()
+    const [orden, setOrden] = useState()
     const favorites = useSelector(state => state.myFavorites)
 
     const filter = (event) => {
-        dispatch(filterCards(event.target.value))
+        dispatch(filterCards(event.target.value, orden))
     }
     const order = (event) => {
+        setOrden(event.target.value)
         dispatch(orderCards(event.target.value))
     }
     const removeFavorite = async (id) => {
@@ -29,7 +31,7 @@ export default function Favorites(props) {
             <div className={style.options}>
                 <p className={style.p}>Select gender:</p>
                 <div className={style.contentSelect}>
-                    <select name="" onChange={(event) => filter(event)} className={style.select}>
+                    <select name="filtro" onChange={(event) => filter(event)} className={style.select}>
                         <option></option>
                         <option value='All'>All</option>
                         <option value='Male'>Male</option>
@@ -40,7 +42,7 @@ export default function Favorites(props) {
                 </div>
                 <p className={style.p}>Select order:</p>
                 <div className={style.contentSelect}>
-                    <select name="" onChange={(event) => order(event)} className={style.select}>
+                    <select name="orden" onChange={(event) => order(event)} className={style.select}>
                         <option></option>
                         <option value='Ascendente'>Ascendente</option>
                         <option value='Descendente'>Descendente</option>

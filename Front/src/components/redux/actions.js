@@ -9,19 +9,10 @@ export const ORDER = 'ORDER'
 export const GET_FAV = 'GET_FAV'
 
 const URL_BASE = 'http://localhost:3001'
-/* export const addFavorite = () => {
-    return function(dispatch){
-        axios.get(`${URL_BASE}/rickandmorty/fav`)
-        .then(data => {
-            dispatch({type:ADD_FAVORITE, payload: data})
-        })
-    }
-} */
-
 export const getFavorites = () => {
-    return async function(dispatch) {
+    return async function (dispatch) {
         const response = await axios(`${URL_BASE}/rickandmorty/fav`)
-        dispatch({type: GET_FAV, payload: response.data})
+        dispatch({ type: GET_FAV, payload: response.data })
     }
 }
 
@@ -40,10 +31,10 @@ export const detailCharacter = (id) => {
 
 export const cleanDetail = () => {
     return { type: CLEAN_DETAIL };
-  };
+};
 
-export function filterCards(gender) {
-    return { type: FILTER, payload: gender }
+export function filterCards(gender, orden) {
+    return { type: FILTER, payload: {gender, orden} }
 }
 
 export function orderCards(orden) {

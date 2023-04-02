@@ -1,4 +1,5 @@
 import { ADD_FAVORITE, CLEAN_DETAIL, DETAIL_CHARACTER, FILTER, GET_FAV, ORDER } from "./actions";
+import filterAndOrder from "./functionsReducer";
 
 const initialState = {
     myFavorites: [],
@@ -12,7 +13,11 @@ const reducer = (state = initialState, { type, payload }) => {
     const { allCharacters } = state
     switch (type) {
         case GET_FAV:
-            return { ...state, myFavorites: payload, allCharacters: payload }
+            return {
+                ...state,
+                myFavorites: payload,
+                allCharacters: payload
+            }
         case DETAIL_CHARACTER:
             return {
                 ...state,
@@ -26,15 +31,9 @@ const reducer = (state = initialState, { type, payload }) => {
                 detailCharacter: {},
             };
         case FILTER:
-            if (payload === 'All') {
-                return {
-                    ...state,
-                    myFavorites: allCharacters
-                }
-            } else return {
-                ...state,
-                myFavorites: allCharacters.filter((character) => character.gender === payload)
-            }
+            // FUNCION PARA ORDENAR EL FILTRADO SI HAY UN ORDEN SELECCIONADO
+            return filterAndOrder(state, payload.gender, payload.orden, allCharacters)
+
         case ORDER:
             const chars = [...state.myFavorites]
             if (payload === 'Ascendente') {
@@ -42,7 +41,6 @@ const reducer = (state = initialState, { type, payload }) => {
                     ...state,
                     myFavorites: chars.sort((a, b) => a.id - b.id)
                 }
-
             }
             if (payload === 'Descendente') {
                 return {
