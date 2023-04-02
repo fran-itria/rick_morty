@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import style from './Card.module.css'
-import { getFavorites, removeFavorite } from "../redux/actions";
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { getFavorites } from "../redux/actions";
+import { connect, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import axios from 'axios'
 
@@ -21,7 +21,6 @@ function Card({ name, species, id, gender, image, onClose, myFavorites }) {
 
    const handleFavorite = () => {
       if (isFav) {
-         console.log('removiendo del servidor')
          setIsFav(false)
          removeFavorite(id)
       } else {

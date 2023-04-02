@@ -7,17 +7,21 @@ import style from './Favorites.module.css'
 export default function Favorites(props) {
     const dispatch = useDispatch()
     const favorites = useSelector(state => state.myFavorites)
-    
+
     const filter = (event) => {
         dispatch(filterCards(event.target.value))
     }
     const order = (event) => {
         dispatch(orderCards(event.target.value))
     }
-    const remove = (id) => {
-        dispatch(removeFavorite(id))
+    const removeFavorite = async (id) => {
+        await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
+        dispatch(getFavorites())
     }
-    
+    useEffect(() => {
+        dispatch(getFavorites())
+    }, [])
+
     return (
         <div>
             {/* FILTER AND ORDER */}
@@ -49,7 +53,7 @@ export default function Favorites(props) {
             {favorites && favorites.map(character => {
                 return <div className={style.container} key={character.id}>
                     <div className={style.information}>
-                        <button onClick={() => remove(character.id)} className={style.fav}>❤️</button>
+                        <button onClick={() => removeFavorite(character.id)} className={style.fav}>❤️</button>
                         <div className={style.texts}>
                             <h2 className={style.name}>{character.name}</h2>
                             <h2 className={style.specie}>{character.species}</h2>

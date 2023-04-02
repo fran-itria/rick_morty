@@ -18,10 +18,6 @@ const URL_BASE = 'http://localhost:3001'
     }
 } */
 
-export const removeFavorite = (id) => {
-    return { type: REMOVE_FAVORITE, payload: id }
-}
-
 export const getFavorites = () => {
     return async function(dispatch) {
         const response = await axios(`${URL_BASE}/rickandmorty/fav`)

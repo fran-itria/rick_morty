@@ -1,4 +1,4 @@
-import { ADD_FAVORITE, CLEAN_DETAIL, DETAIL_CHARACTER, FILTER, GET_CHARACTER, GET_FAV, ORDER, REMOVE_FAVORITE } from "./actions";
+import { ADD_FAVORITE, CLEAN_DETAIL, DETAIL_CHARACTER, FILTER, GET_FAV, ORDER } from "./actions";
 
 const initialState = {
     myFavorites: [],
@@ -11,18 +11,8 @@ const initialState = {
 const reducer = (state = initialState, { type, payload }) => {
     const { allCharacters } = state
     switch (type) {
-        case ADD_FAVORITE:
-            return {
-                ...state,
-                myFavorites: [...allCharacters, payload],
-                allCharacters: [...allCharacters, payload]
-            }
-        case REMOVE_FAVORITE:
-            return {
-                ...state,
-                myFavorites: state.myFavorites.filter((character) => character.id !== payload),
-                allCharacters: allCharacters.filter((character) => character.id !== payload)
-            }
+        case GET_FAV:
+            return { ...state, myFavorites: payload, allCharacters: payload }
         case DETAIL_CHARACTER:
             return {
                 ...state,
@@ -35,8 +25,6 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 detailCharacter: {},
             };
-        case GET_FAV:
-            return { ...state, myFavorites: payload }
         case FILTER:
             if (payload === 'All') {
                 return {
@@ -49,14 +37,14 @@ const reducer = (state = initialState, { type, payload }) => {
             }
         case ORDER:
             const chars = [...state.myFavorites]
-            if (payload == 'Ascendente') {
+            if (payload === 'Ascendente') {
                 return {
                     ...state,
                     myFavorites: chars.sort((a, b) => a.id - b.id)
                 }
 
             }
-            if (payload == 'Descendente') {
+            if (payload === 'Descendente') {
                 return {
                     ...state,
                     myFavorites: chars.sort((a, b) => b.id - a.id)

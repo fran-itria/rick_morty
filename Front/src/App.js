@@ -8,7 +8,7 @@ import Detail from './components/detail/Detail.jsx'
 import Form from './components/form/Form';
 import Favorites from "./components/favorites/Favorites";
 import { useDispatch } from 'react-redux';
-import { removeFavorite } from './components/redux/actions';
+// import { removeFavorite } from './components/redux/actions';
 import { login, onSearch } from "./functions/functions";
 
 function App() {
@@ -20,11 +20,9 @@ function App() {
 
   function onClose(id) {
     setCharacters(characters.filter((character) => character.id != id))
-    dispatch(removeFavorite(id))
   }
 
   useEffect(() => {
-    console.log(access)
     !access && navigate('/');
   }, [access]);
 
