@@ -55,10 +55,6 @@ function filtro(array, gender) {
     return array.filter((character) => character.gender === gender)
 }
 
-
-
-
-
 //FUNCION CUANDO NO HAY UN ORDEN SELECCIONADO
 function notOrder(state, gender, allCharacters) {
     if (gender === 'All') {
