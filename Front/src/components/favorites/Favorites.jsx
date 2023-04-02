@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux"
-import { filterCards, getFavorites, orderCards, removeFavorite } from "../redux/actions"
+import { filterCards, getFavorites, orderCards } from "../redux/actions"
 import style from './Favorites.module.css'
 
 export default function Favorites(props) {

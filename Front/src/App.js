@@ -7,14 +7,12 @@ import About from './components/about/About';
 import Detail from './components/detail/Detail.jsx'
 import Form from './components/form/Form';
 import Favorites from "./components/favorites/Favorites";
-import { useDispatch } from 'react-redux';
 // import { removeFavorite } from './components/redux/actions';
 import { login, onSearch } from "./functions/functions";
 
 function App() {
   const [characters, setCharacters] = useState([])
   const [access, setAccess] = useState(false)
-  const dispatch = useDispatch()
   const navigate = useNavigate()
   const { pathname } = useLocation()
 

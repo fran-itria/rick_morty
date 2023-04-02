@@ -18,7 +18,7 @@ export function onSearch(characterId, characters, setCharacters) {
 
 ////////////////////////////////
 
-// FUNCTIONS FORM 
+//  <---- FUNCTIONS FORM ---->
 
 // LOGIN FORM
 const username = ''
