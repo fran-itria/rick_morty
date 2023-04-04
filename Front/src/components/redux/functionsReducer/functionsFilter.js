@@ -27,6 +27,7 @@ function ascendente(state, filt, gender) {
     }
 
 }
+
 // FUNCION PARA ORDENAR DE MENOR A MAYOR 
 function ordenarAscendente(array) {
     return array.sort((a, b) => a.id - b.id)
@@ -45,6 +46,7 @@ function descendente(state, filt, gender) {
         myFavorites: ordenarDescendente(genero)
     }
 }
+
 // FUNCION PARA ORDENAR DE MAYOR A MENOR 
 function ordenarDescendente(array) {
     return array.sort((a, b) => b.id - a.id)

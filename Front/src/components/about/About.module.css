@@ -1,7 +1,7 @@
 
 
 .container {
-    --searchBarHight: 33px;
+    --searchBarHight: 38px;
     height: calc(100vh - var(--searchBarHight));
     display: flex;
     flex-direction: column;

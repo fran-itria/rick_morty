@@ -7,14 +7,22 @@ export const CLEAN_DETAIL = 'CLEAN_DETAIL'
 export const FILTER = 'FILTER'
 export const ORDER = 'ORDER'
 export const GET_FAV = 'GET_FAV'
+export const GET_FAVORITE_FILTER = 'GET_FAVORITE_FILTER'
 
 const URL_BASE = 'http://localhost:3001'
-export const getFavorites = () => {
+export const getFavorites = (gender, order) => {
     return async function (dispatch) {
         const response = await axios(`${URL_BASE}/rickandmorty/fav`)
-        dispatch({ type: GET_FAV, payload: response.data })
+        dispatch({ type: GET_FAV, payload: {response: response.data, gender, order} })
     }
 }
+
+// export const getFavoriteFilter = (gender, order) => {
+//     return async function (dispatch) {
+//         const response = await axios(`${URL_BASE}/rickandmorty/fav`)
+//         dispatch({ type: GET_FAVORITE_FILTER, payload: {response: response.data, gender, order} })
+//     }
+// }
 
 export const detailCharacter = (id) => {
     return async function (dispatch) {

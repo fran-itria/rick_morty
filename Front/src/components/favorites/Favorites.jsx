@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux"
-import { filterCards, getFavorites, orderCards } from "../redux/actions"
+import { filterCards, getFavoriteFilter, getFavorites, orderCards } from "../redux/actions"
 import style from './Favorites.module.css'
 
 export default function Favorites(props) {
     const dispatch = useDispatch()
     const [orden, setOrden] = useState()
+    const [gender, setGender] = useState()
     const favorites = useSelector(state => state.myFavorites)
 
     const filter = (event) => {
+        setGender(event.target.value)
         dispatch(filterCards(event.target.value, orden))
     }
     const order = (event) => {
@@ -18,7 +20,10 @@ export default function Favorites(props) {
     }
     const removeFavorite = async (id) => {
         await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
-        dispatch(getFavorites())
+        // if (!gender) {
+        //     dispatch(getFavorites())
+        // } else dispatch(getFavoriteFilter(gender, orden))
+        dispatch(getFavorites(gender, orden))
     }
     useEffect(() => {
         dispatch(getFavorites())
@@ -26,8 +31,9 @@ export default function Favorites(props) {
 
     return (
         <div>
-            {/* FILTER AND ORDER */}
             <h1 className={style.h1}>List of your favorite Rick and Morty characters</h1>
+
+            {/* FILTER AND ORDER */}
             <div className={style.options}>
                 <p className={style.p}>Select gender:</p>
                 <div className={style.contentSelect}>
@@ -50,8 +56,11 @@ export default function Favorites(props) {
                 </div>
             </div>
 
+            {/* Si no hay personajes favoritos mostrar el siguiente titulo */}
+            {favorites.length == 0 && <h1 style={{ color: 'white' }}>Select your favorite characters</h1>}
+
+            {/* {gender && favorites.length > 0 ? <p className={style.p}>{gender} characters: {favorites.length}</p> : <></>} */}
             {/* FAVORITE CHARACTER */}
-            {favorites.length == 0 && <h1 style={{ color: 'white' }}>Not found characters with this gender</h1>}
             {favorites && favorites.map(character => {
                 return <div className={style.container} key={character.id}>
                     <div className={style.information}>
@@ -60,7 +69,6 @@ export default function Favorites(props) {
                             <h2 className={style.name}>{character.name}</h2>
                             <h2 className={style.specie}>{character.species}</h2>
                             <h2 className={style.gender}>{character.gender}</h2>
-                            <h2> {character.id} </h2>
                         </div>
                         <img src={character.image} alt={character.name} className={style.image} />
                     </div>

@@ -3,6 +3,20 @@
     width: auto;
     height: auto;
 }
+.notFound{
+    display: flex;
+    justify-content: center;
+}
+.h1{
+    color: black;
+    text-align: center;
+    /* text-shadow: 5px 2px rgb(0, 26, 255); */
+    width: 55vh;
+    background-color: #82E0AA;
+    border-radius: 40px 40px 0px 0px;
+    border-left: 15px solid #5DADE2 ;
+    border-right: 15px solid #5DADE2 ;
+}
 .cards {
     display: grid;
     grid-template-columns: auto auto auto;
