@@ -1,6 +1,6 @@
 
 .navBar{
-    /* margin-top: 10px; */
+    margin-top: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@
     position: absolute;
     right: 20px;
     /* top: 10px; */
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 .about{
     margin-top: 10px;

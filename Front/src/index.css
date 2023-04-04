@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://img.freepik.com/foto-gratis/fondo-galaxia-purpura_1017-3748.jpg?w=1380&t=st=1678140572~exp=1678141172~hmac=40e17b76810ed5d31bfbd3802c93f05888614cce6552c55c118b1835268f2fee');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 code {
