@@ -1,12 +1,11 @@
 // FUNCION PARA ORDENAR EL FILTRADO SI HAY O NO UN ORDEN SELECCIONADO
 export default function filterAndOrder(state, gender, order, allCharacters) {
     if (order) {
-        const filt = allCharacters
         if (order === 'Ascendente') {
-            return ascendente(state, filt, gender)
+            return ascendente(state, allCharacters, gender)
         }
         if (order === 'Descendente') {
-            return descendente(state, filt, gender)
+            return descendente(state, allCharacters, gender)
         }
     } else {
         return notOrder(state, gender, allCharacters)
@@ -14,47 +13,32 @@ export default function filterAndOrder(state, gender, order, allCharacters) {
 }
 
 // FUNCION PARA EL CASO QUE HAYA UN ORDEN ASCENDENTE
-function ascendente(state, filt, gender) {
-    const genero = filtro(filt, gender)
+function ascendente(state, allCharacters, gender) {
+    const genero = allCharacters.filter((character) => character.gender === gender)
     if (gender === 'All') {
         return {
             ...state,
-            myFavorites: ordenarAscendente(filt)
+            myFavorites: allCharacters.sort((a, b) => a.id - b.id)
         }
     } else return {
         ...state,
-        myFavorites: ordenarAscendente(genero)
+        myFavorites: genero.sort((a, b) => a.id - b.id)
     }
 
-}
-
-// FUNCION PARA ORDENAR DE MENOR A MAYOR 
-function ordenarAscendente(array) {
-    return array.sort((a, b) => a.id - b.id)
 }
 
 // FUNCION PARA EL CASO QUE HAYA UN ORDEN DESCENDENTE
-function descendente(state, filt, gender) {
-    const genero = filtro(filt, gender)
+function descendente(state, allCharacters, gender) {
+    const genero = allCharacters.filter((character) => character.gender === gender)
     if (gender === 'All') {
         return {
             ...state,
-            myFavorites: ordenarDescendente(filt)
+            myFavorites: allCharacters.sort((a, b) => b.id - a.id)
         }
     } else return {
         ...state,
-        myFavorites: ordenarDescendente(genero)
+        myFavorites: genero.sort((a, b) => b.id - a.id)
     }
-}
-
-// FUNCION PARA ORDENAR DE MAYOR A MENOR 
-function ordenarDescendente(array) {
-    return array.sort((a, b) => b.id - a.id)
-}
-
-// FUNCION PARA FILTRAR EL ESATDO
-function filtro(array, gender) {
-    return array.filter((character) => character.gender === gender)
 }
 
 //FUNCION CUANDO NO HAY UN ORDEN SELECCIONADO
@@ -66,6 +50,6 @@ function notOrder(state, gender, allCharacters) {
         }
     } else return {
         ...state,
-        myFavorites: filtro(allCharacters, gender)
+        myFavorites: allCharacters.filter((character) => character.gender === gender)
     }
 }
