@@ -4,8 +4,6 @@ import { DETAIL_CHARACTER } from "../components/redux/actions";
 
 // FUNCION SEARCH APP
 const URL_BASE = "http://localhost:3001";
-const KEY = '179180d9d086.4e91a167f3c86bcbbb24';
-
 export function onSearch(characterId, characters, setCharacters) {
     fetch(`${URL_BASE}/onsearch/${characterId}`)
         .then(res => res.json())
