@@ -4,16 +4,14 @@ export const ADD_FAVORITE = 'ADD_FAVORITE'
 export const REMOVE_FAVORITE = 'REMOVE_FAVORTIE'
 export const DETAIL_CHARACTER = 'DETAIL_CHARACTER'
 export const CLEAN_DETAIL = 'CLEAN_DETAIL'
-export const FILTER = 'FILTER'
-export const ORDER = 'ORDER'
 export const GET_FAV = 'GET_FAV'
-export const GET_FAVORITE_FILTER = 'GET_FAVORITE_FILTER'
+export const FILTER_FAVORITES = 'FILTER_FAVORITES'
 
 const URL_BASE = 'http://localhost:3001'
 export const getFavorites = (gender, order) => {
     return async function (dispatch) {
         const response = await axios(`${URL_BASE}/rickandmorty/fav`)
-        dispatch({ type: GET_FAV, payload: {response: response.data, gender, order} })
+        dispatch({ type: GET_FAV, payload: { response: response.data, gender, order } })
     }
 }
 
@@ -41,10 +39,6 @@ export const cleanDetail = () => {
     return { type: CLEAN_DETAIL };
 };
 
-export function filterCards(gender, orden) {
-    return { type: FILTER, payload: {gender, orden} }
-}
-
-export function orderCards(orden) {
-    return { type: ORDER, payload: orden }
+export function filterFavorites(gender, order) {
+    return { type: FILTER_FAVORITES, payload: { gender, order } }
 }

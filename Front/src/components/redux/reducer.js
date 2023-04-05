@@ -1,7 +1,6 @@
-import { CLEAN_DETAIL, DETAIL_CHARACTER, FILTER, GET_FAV, GET_FAVORITE_FILTER, ORDER } from "./actions";
-import filterAndOrder from "./functionsReducer/functionsFilter";
+import { CLEAN_DETAIL, DETAIL_CHARACTER, FILTER_FAVORITES, GET_FAV } from "./actions";
+import filterAndOrder from "./functionsReducer/functionsFilterAndOrder/functionsFilterAndOrder";
 import getFavoritesAndFilter from "./functionsReducer/functionGetFavorite";
-import order from "./functionsReducer/functionOrder";
 
 const initialState = {
     myFavorites: [],
@@ -37,11 +36,8 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 detailCharacter: {},
             };
-        case FILTER:
-            // FUNCION PARA ORDENAR EL FILTRADO SI HAY UN ORDEN SELECCIONADO
-            return filterAndOrder(state, payload.gender, payload.orden, allCharacters)
-        case ORDER:
-            return order(state, payload)
+        case FILTER_FAVORITES:
+            return filterAndOrder(state, payload.gender, payload.order, allCharacters)
         default:
             return state
     }

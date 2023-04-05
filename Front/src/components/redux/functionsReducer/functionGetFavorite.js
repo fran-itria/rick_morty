@@ -1,5 +1,6 @@
-import filterAndOrder from "./functionsFilter"
+import filterAndOrder from "./functionsFilterAndOrder/functionsFilterAndOrder"
 
+//FUNCION PARA QUE SI TENGO LOS PERSONAJES FAVORTIOS FILTRADOS, CUANDO ELIMINE UNO, LOS PERSONAJES SIGAN FILTRADOS, Y NO ME TRAIGA TODOS DE VUELTA
 export default function getFavoritesAndFilter(state, response, gender, order){
     if (gender) {
         const paramState = {

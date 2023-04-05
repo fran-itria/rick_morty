@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux"
-import { filterCards, getFavoriteFilter, getFavorites, orderCards } from "../redux/actions"
+import { getFavorites, filterFavorites} from "../redux/actions"
 import style from './Favorites.module.css'
 
 export default function Favorites(props) {
@@ -12,11 +12,12 @@ export default function Favorites(props) {
 
     const filter = (event) => {
         setGender(event.target.value)
-        dispatch(filterCards(event.target.value, orden))
+        dispatch(filterFavorites(event.target.value, orden))
     }
     const order = (event) => {
         setOrden(event.target.value)
-        dispatch(orderCards(event.target.value))
+        dispatch(filterFavorites(gender, event.target.value))
+
     }
     const removeFavorite = async (id) => {
         await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
@@ -49,7 +50,7 @@ export default function Favorites(props) {
                 <p className={style.p}>Select order:</p>
                 <div className={style.contentSelect}>
                     <select name="orden" onChange={(event) => order(event)} className={style.select}>
-                        <option></option>
+                        <option value='Default'></option>
                         <option value='Ascendente'>Ascendente</option>
                         <option value='Descendente'>Descendente</option>
                     </select>
@@ -57,7 +58,7 @@ export default function Favorites(props) {
             </div>
 
             {/* Si no hay personajes favoritos mostrar el siguiente titulo */}
-            {favorites.length == 0 && <h1 style={{ color: 'white' }}>Select your favorite characters</h1>}
+            {/* {favorites.length == 0 && <h1 style={{ color: 'white' }}>Select your favorite characters</h1>} */}
 
             {/* {gender && favorites.length > 0 ? <p className={style.p}>{gender} characters: {favorites.length}</p> : <></>} */}
             {/* FAVORITE CHARACTER */}
