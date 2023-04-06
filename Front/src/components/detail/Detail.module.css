@@ -6,6 +6,44 @@
     position: relative;
 }
 
+.loadingPadre{
+    --navHeight: 37px;
+    height: calc(100vh - var(--navHeight));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes example {
+    0%   {border-top: solid red 15px; border-bottom: solid red 15px}
+    25%  {border-top: solid yellow 15px; border-bottom: solid yellow 15px}
+    50%  {border-top: solid green 15px; border-bottom: solid green 15px}
+    75%  {border-top: solid yellow 15px; border-bottom: solid yellow 15px}
+    100%  {border-top: solid red 15px; border-bottom: solid red 15px}
+    0%   {left:-200px; top:0px;}
+    50%  {left:200px; top:0px;}
+    100% {left:-200px; top:0px;}
+    /* 75%  {left:0px; top:200px;}
+    100% {left:0px; top:0px;} */
+}
+.loading{
+    margin-top: 0px;
+    background-color: white;
+    width: 10vw;
+    height: 20vh;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-top: solid red 15px;
+    border-bottom: solid red 15px;
+    animation-name: example;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
 .introduction {
     display: flex;
     justify-content: center;

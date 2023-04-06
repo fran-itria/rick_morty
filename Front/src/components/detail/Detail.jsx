@@ -13,9 +13,12 @@ export default function Detail() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(detailCharacter(id))
+        return () => dispatch(cleanDetail())
     }, [])
 
-    if (!detail) return (<h1 style={{ background: 'white' }}>LOADING...</h1>)
+    if (Object.keys(detail).length == 0) return <div className={style.loadingPadre}>
+        <h1 className={style.loading}>LOADING...</h1>
+    </div>
     return (
         <div className={style.conteiner} >
             <div className={style.introduction}>
