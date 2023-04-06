@@ -39,7 +39,7 @@ export default function Favorites(props) {
                 <p className={style.p}>Select gender:</p>
                 <div className={style.contentSelect}>
                     <select name="filtro" onChange={(event) => filter(event)} className={style.select}>
-                        <option></option>
+                        <option value='Default'></option>
                         <option value='All'>All</option>
                         <option value='Male'>Male</option>
                         <option value='Female'>Female</option>
@@ -58,9 +58,9 @@ export default function Favorites(props) {
             </div>
 
             {/* Si no hay personajes favoritos mostrar el siguiente titulo */}
-            {/* {favorites.length == 0 && <h1 style={{ color: 'white' }}>Select your favorite characters</h1>} */}
+            {favorites.length == 0 && <h1 style={{ color: 'white' }}>Select your favorite characters</h1>}
 
-            {/* {gender && favorites.length > 0 ? <p className={style.p}>{gender} characters: {favorites.length}</p> : <></>} */}
+            {gender && favorites.length > 0 ? <p className={style.p}>{gender} characters: {favorites.length}</p> : <></>}
             {/* FAVORITE CHARACTER */}
             {favorites && favorites.map(character => {
                 return <div className={style.container} key={character.id}>

@@ -17,6 +17,13 @@ export function notGender(order, state, chars, allCharacters) {
 
 // FUNCION PARA EL CASO EN EL QUE NO HAYA UN ORDEN SELECCIONADO
 export function notOrder(state, gender, allCharacters) {
+    if (gender === 'Default') {
+        console.log('gender is' + gender)
+        return {
+            ...state,
+            myFavorites: []
+        }
+    }
     if (gender === 'All') {
         return {
             ...state,
