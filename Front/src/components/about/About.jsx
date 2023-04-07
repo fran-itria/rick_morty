@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from './About.module.css'
+import { useDispatch } from "react-redux";
+import { navBackground } from "../redux/actions";
 
 export default function About() {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(navBackground('About'))
+    }, [])
     return (
         <div className={style.container}>
             <div className={style.information}>
-                <h1 className={style.h1}>Ricki and Morty </h1>
-                <p className={style.p}>Por el momento lo que se puede hacer con la app es buscar mediante el buscador de la esquina
-                    superior derecha a un personaje de la serie animada con su id, es decir escribiendo un número.</p>
+                <p className={style.p}>En esta app podrasa busacr mediante un número un personaje, podras agregarlo a favoritos si así lo deseas
+                y podrás filtrarlos por el género y ordenarlos si usted gusta</p>
                 <h3 className={style.k3}>Autor: Franco Itria</h3>
             </div>
         </div>

@@ -2,11 +2,12 @@ import React from "react";
 import SearchBar from "../search/SearchBar";
 import style from './Nav.module.css'
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Nav({ onSearch, characters, setCharacters }) {
+    const background = useSelector(state => state.component)
     return (
-        <div className={style.navBar}>
+        <div className={background == 'About' ? style.About : style.Cards}>
             <div className={style.about}>
                 <NavLink to='/about' className={({ isActive }) => isActive ? style.active : style.disable}>About</NavLink>
             </div>

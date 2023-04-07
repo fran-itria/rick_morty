@@ -7,6 +7,7 @@ export const CLEAN_DETAIL = 'CLEAN_DETAIL'
 export const GET_FAV = 'GET_FAV'
 export const FILTER_FAVORITES = 'FILTER_FAVORITES'
 export const GENDER_ORDER = 'GENDER_ORDER'
+export const NAV_BACKGROUND = 'NAV_BACKGROUND'
 
 const URL_BASE = 'http://localhost:3001'
 export const getFavorites = (gender, order) => {
@@ -46,4 +47,8 @@ export function filterFavorites(gender, order) {
 
 export const genderOrder = (gender, order) => {
     return { type: GENDER_ORDER, payload: { gender, order } }
+}
+
+export const navBackground = (component) => {
+    return { type: NAV_BACKGROUND, payload: component}
 }

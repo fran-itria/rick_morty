@@ -1,12 +1,14 @@
-
-
 .container {
-    --searchBarHight: 38px;
+    --searchBarHight: 32px;
     height: calc(100vh - var(--searchBarHight));
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url('https://i0.wp.com/www.vozactual.com/wp-content/uploads/2020/02/Rickandmortytitle.png?fit=2680%2C1613&ssl=1');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 @keyframes about {

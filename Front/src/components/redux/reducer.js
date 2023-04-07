@@ -1,4 +1,4 @@
-import { CLEAN_DETAIL, DETAIL_CHARACTER, FILTER_FAVORITES, GENDER_ORDER, GET_FAV, genderOrder } from "./actions";
+import { CLEAN_DETAIL, DETAIL_CHARACTER, FILTER_FAVORITES, GENDER_ORDER, GET_FAV, NAV_BACKGROUND, genderOrder } from "./actions";
 import filterAndOrder from "./functionsReducer/functionsFilterAndOrder/functionsFilterAndOrder";
 import getFavoritesAndFilter from "./functionsReducer/functionGetFavorite";
 
@@ -11,7 +11,8 @@ const initialState = {
     filters: {
         gender: '',
         order: ''
-    }
+    },
+    component: ''
 }
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -50,6 +51,11 @@ const reducer = (state = initialState, { type, payload }) => {
                     order: payload.order
                 }
             }
+            case NAV_BACKGROUND:
+                return {
+                    ...state,
+                    component: payload
+                }
         default:
             return state
     }
