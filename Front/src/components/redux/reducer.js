@@ -1,4 +1,4 @@
-import { CLEAN_DETAIL, DETAIL_CHARACTER, FILTER_FAVORITES, GET_FAV } from "./actions";
+import { CLEAN_DETAIL, DETAIL_CHARACTER, FILTER_FAVORITES, GENDER_ORDER, GET_FAV, genderOrder } from "./actions";
 import filterAndOrder from "./functionsReducer/functionsFilterAndOrder/functionsFilterAndOrder";
 import getFavoritesAndFilter from "./functionsReducer/functionGetFavorite";
 
@@ -8,6 +8,10 @@ const initialState = {
     detailCharacter: {},
     firstEpisode: {},
     lastEpisode: {},
+    filters: {
+        gender: '',
+        order: ''
+    }
 }
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -38,6 +42,14 @@ const reducer = (state = initialState, { type, payload }) => {
             };
         case FILTER_FAVORITES:
             return filterAndOrder(state, payload.gender, payload.order, allCharacters)
+        case GENDER_ORDER:
+            return {
+                ...state,
+                filters: {
+                    gender: payload.gender,
+                    order: payload.order
+                }
+            }
         default:
             return state
     }

@@ -6,6 +6,7 @@ export const DETAIL_CHARACTER = 'DETAIL_CHARACTER'
 export const CLEAN_DETAIL = 'CLEAN_DETAIL'
 export const GET_FAV = 'GET_FAV'
 export const FILTER_FAVORITES = 'FILTER_FAVORITES'
+export const GENDER_ORDER = 'GENDER_ORDER'
 
 const URL_BASE = 'http://localhost:3001'
 export const getFavorites = (gender, order) => {
@@ -41,4 +42,8 @@ export const cleanDetail = () => {
 
 export function filterFavorites(gender, order) {
     return { type: FILTER_FAVORITES, payload: { gender, order } }
+}
+
+export const genderOrder = (gender, order) => {
+    return { type: GENDER_ORDER, payload: { gender, order } }
 }
