@@ -12,7 +12,6 @@ function Card({ name, species, id, gender, image, onClose, myFavorites }) {
 
    const addFavorite = (character) => {
       axios.post('http://localhost:3001/rickandmorty/fav', character)
-         .then((response) => console.log('ok'))
    }
    const removeFavorite = async (id) => {
       await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)

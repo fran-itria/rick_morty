@@ -19,8 +19,8 @@ export function onSearch(characterId, characters, setCharacters) {
 //  <---- FUNCTIONS FORM ---->
 
 // LOGIN FORM
-const username = ''
-const password = ''
+const username = 'FrancoItria01@gmail.com'
+const password = 'pepito01'
 export function login(userData, setAccess, navigate) {
     if (userData.password == password && userData.username == username) {
         setAccess(true)

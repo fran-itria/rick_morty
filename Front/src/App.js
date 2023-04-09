@@ -5,7 +5,7 @@ import Cards from './components/cards/Cards.jsx'
 import Nav from "./components/nav/Nav.jsx";
 import About from './components/about/About';
 import Detail from './components/detail/Detail.jsx'
-import Form from './components/form/Form';
+import Form from './components/login/Form';
 import Favorites from "./components/favorites/Favorites";
 // import { removeFavorite } from './components/redux/actions';
 import { login, onSearch } from "./functions/functions";
