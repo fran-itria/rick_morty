@@ -13,17 +13,16 @@
 }
 
 .information{
-    background: rgb(255, 145, 145);
+    background: rgba(99, 96, 255, 0.712);
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
     width: fit-content;
-    border: solid rgb(150, 0, 0) 5px;
+    border: solid rgb(0, 238, 255) 5px;
     border-radius: 10px;
     position: relative;
-    opacity: 0.8;
 }
 .information:hover{
     opacity: 1;
@@ -53,6 +52,10 @@
     /* opacity: 0.8; */
     border-radius: 0px 5px 5px 0px;
 }
+.genderCount{
+    display: flex;
+    justify-content: center;
+}
 
 
 /* ------------- */
@@ -63,9 +66,11 @@
     justify-content: center;
 }
 .p{
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: bold;
-    text-decoration: underline white 3px;
+    background-color: rgba(0, 0, 0, 0.747);
+    border-radius: 5px 5px 0px 0px;
+    text-decoration: underline rgb(255, 0, 0) 3px;
 }
 .contentSelect{
     display: flex;
@@ -77,5 +82,8 @@
     height: fit-content;
     text-align: center;
     border-right: 5px solid rgb(0, 238, 255);
+    border-radius: 10px;
     font-weight: bold;
+    background-color: rgb(189, 189, 189);
+    color: rgb(29, 29, 29);
 }

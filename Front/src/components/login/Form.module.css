@@ -3,6 +3,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url('https://sportshub.cbsistatic.com/i/2022/09/13/faa6293e-5f96-422a-b265-5d4d7e164177/rick-and-morty.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
 }
 
 .form {
@@ -16,7 +20,6 @@
     width: 35vh;
     border-radius: 10px;
     border: solid 3px black;
-    box-shadow: 20px -20px rgb(255, 255, 255);
 }
 
 .inputs {

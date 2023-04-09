@@ -10,6 +10,7 @@ export const GENDER_ORDER = 'GENDER_ORDER'
 export const NAV_BACKGROUND = 'NAV_BACKGROUND'
 
 const URL_BASE = 'http://localhost:3001'
+const KEY = '179180d9d086.4e91a167f3c86bcbbb24';
 export const getFavorites = (gender, order) => {
     return async function (dispatch) {
         const response = await axios(`${URL_BASE}/rickandmorty/fav`)
@@ -28,12 +29,12 @@ export const detailCharacter = (id) => {
     return async function (dispatch) {
         const response = await fetch(`${URL_BASE}/detail/${id}`)
         const detail = await response.json()
-        /* const episodeOne = await fetch(`${detail.episode[0]}?key=${KEY}`)
+        const episodeOne = await fetch(`${detail.episode[0]}?key=${KEY}`)
         const first = await episodeOne.json()
         const episodeFinal = await fetch(`${detail.episode.at(-1)}?key=${KEY}`)
         const last = await episodeFinal.json()
-        dispatch({ type: DETAIL_CHARACTER, payload: { detail, first, last } }) */
-        dispatch({ type: DETAIL_CHARACTER, payload: detail })
+        dispatch({ type: DETAIL_CHARACTER, payload: { detail, first, last } })
+        // dispatch({ type: DETAIL_CHARACTER, payload: detail })
     }
 }
 

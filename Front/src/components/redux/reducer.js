@@ -32,9 +32,9 @@ const reducer = (state = initialState, { type, payload }) => {
         case DETAIL_CHARACTER:
             return {
                 ...state,
-                detailCharacter: payload,
-                // firstEpisode: payload.first,
-                // lastEpisode: payload.last
+                detailCharacter: payload.detail,
+                firstEpisode: payload.first,
+                lastEpisode: payload.last
             }
         case CLEAN_DETAIL:
             return {

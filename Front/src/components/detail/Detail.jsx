@@ -8,8 +8,8 @@ export default function Detail() {
     const { id } = useParams()
     const navigate = useNavigate()
     const detail = useSelector(state => state.detailCharacter)
-    // const first = useSelector(state => state.firstEpisode)
-    // const last = useSelector(state => state.lastEpisode)
+    const first = useSelector(state => state.firstEpisode)
+    const last = useSelector(state => state.lastEpisode)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(detailCharacter(id))
@@ -45,7 +45,7 @@ export default function Detail() {
                         <span className={style.subTitle}>Episodes:</span>
                         <span className={style.text}>{detail.episode?.length}</span>
                     </li>
-                    {/* {first.hasOwnProperty('name') ?
+                    {first.hasOwnProperty('name') ?
                         <li className={style.item}>
                             <span className={style.subTitle}>First episode: </span>
                             <span className={style.text}>{first.name}</span>
@@ -60,7 +60,7 @@ export default function Detail() {
                         </li>
                         :
                         <></>
-                    } */}
+                    }
                     <li className={style.item}>
                         <span className={style.subTitle}>Origin:</span>
                         <span className={style.text}>{detail.origin?.name}</span>
