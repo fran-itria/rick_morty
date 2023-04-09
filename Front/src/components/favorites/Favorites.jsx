@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux"
-import { getFavorites, filterFavorites, genderOrder } from "../redux/actions"
+import { getFavorites, filterFavorites, genderOrder, navBackground } from "../redux/actions"
 import style from './Favorites.module.css'
 
 export default function Favorites(props) {
@@ -25,7 +25,8 @@ export default function Favorites(props) {
         dispatch(getFavorites(filters.gender, filters.order))
     }
     useEffect(() => {
-            dispatch(getFavorites(filters.gender, filters.order))
+        dispatch(getFavorites(filters.gender, filters.order))
+        dispatch(navBackground('Favorites'))
     }, [])
 
     useEffect(() => {
@@ -34,56 +35,61 @@ export default function Favorites(props) {
         }
     }, [gender, orden])
 
-    useEffect(() => {
-        console.log(filters)
-    }, [filters])
-
     return (
-        <div>
-            <h1 className={style.h1}>List of your favorite Rick and Morty characters</h1>
+        <div className={style.padre}>
+            <div>
 
-            {/* FILTER AND ORDER */}
-            <div className={style.options}>
-                <p className={style.p}>Select gender:</p>
-                <div className={style.contentSelect}>
-                    <select name="filtro" onChange={(event) => filter(event)} className={style.select}>
-                        <option value='Default'></option>
-                        <option value='All'>All</option>
-                        <option value='Male'>Male</option>
-                        <option value='Female'>Female</option>
-                        <option value='Genderless'>Genderless</option>
-                        <option value='unknown'>unknown</option>
-                    </select>
-                </div>
-                <p className={style.p}>Select order:</p>
-                <div className={style.contentSelect}>
-                    <select name="orden" onChange={(event) => order(event)} className={style.select}>
-                        <option value='Default'></option>
-                        <option value='Ascendente'>Ascendente</option>
-                        <option value='Descendente'>Descendente</option>
-                    </select>
-                </div>
-            </div>
+                <br></br>
+                <h1 className={style.h1}>List of your favorite Rick and Morty characters</h1>
 
-            {/* Si no hay personajes favoritos mostrar el siguiente titulo */}
-            {favorites.length == 0 && <h1 style={{ color: 'white' }}>Select your favorite characters</h1>}
-
-            {filters.gender && favorites.length > 0 ? <p className={style.p}>{filters.gender} characters: {favorites.length}</p> : <></>}
-            {/* FAVORITE CHARACTER */}
-            {favorites && favorites.map(character => {
-                return <div className={style.container} key={character.id}>
-                    <div className={style.information}>
-                        <button onClick={() => removeFavorite(character.id)} className={style.fav}>❤️</button>
-                        <div className={style.texts}>
-                            <h2 className={style.name}>{character.name}</h2>
-                            <h2 className={style.specie}>{character.species}</h2>
-                            <h2 className={style.gender}>{character.gender}</h2>
-                        </div>
-                        <img src={character.image} alt={character.name} className={style.image} />
+                {/* FILTER AND ORDER */}
+                <div className={style.options}>
+                    <p className={style.p}>Select gender:</p>
+                    <div className={style.contentSelect}>
+                        <select name="filtro" onChange={(event) => filter(event)} className={style.select}>
+                            <option value='Default'></option>
+                            <option value='All'>All</option>
+                            <option value='Male'>Male</option>
+                            <option value='Female'>Female</option>
+                            <option value='Genderless'>Genderless</option>
+                            <option value='unknown'>unknown</option>
+                        </select>
+                    </div>
+                    <p className={style.p}>Select order:</p>
+                    <div className={style.contentSelect}>
+                        <select name="orden" onChange={(event) => order(event)} className={style.select}>
+                            <option value='Default'></option>
+                            <option value='Ascendente'>Ascendente</option>
+                            <option value='Descendente'>Descendente</option>
+                        </select>
                     </div>
                 </div>
-            })
-            }
+
+
+                {filters.gender && favorites.length > 0 ?
+                    <div className={style.genderCount}>
+                        <p className={style.p}>{filters.gender} characters: {favorites.length}</p>
+                    </div> :
+                    <></>
+                }
+                {/* Si no hay personajes favoritos mostrar el siguiente titulo */}
+                {favorites.length == 0 ? <h1 style={{ color: 'white' }}>Select your favorite characters</h1> : <></>}
+                    {/* FAVORITE CHARACTER */ }
+                    {favorites && favorites.map(character => {
+                        return <div className={style.container} key={character.id}>
+                            <div className={style.information}>
+                                <button onClick={() => removeFavorite(character.id)} className={style.fav}>❤️</button>
+                                <div className={style.texts}>
+                                    <h2 className={style.name}>{character.name}</h2>
+                                    <h2 className={style.specie}>{character.species}</h2>
+                                    <h2 className={style.gender}>{character.gender}</h2>
+                                </div>
+                                <img src={character.image} alt={character.name} className={style.image} />
+                            </div>
+                        </div>
+                    })
+                }
+            </div>
         </div>
     )
 }
