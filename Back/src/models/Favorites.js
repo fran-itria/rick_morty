@@ -22,6 +22,7 @@ module.exports = (sequelize) => {
         origin: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true
         },
         species: {
             type: DataTypes.STRING,
