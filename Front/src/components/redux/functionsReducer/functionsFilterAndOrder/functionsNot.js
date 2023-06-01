@@ -1,5 +1,5 @@
 // FUNCION PARA EL CASO EN EL QUE NO HAYA UN GENERO SELECCIONADO
-export function notGender(order, state, chars, allCharacters) {
+export function     notGender(order, state, chars, allCharacters) {
     if (order === 'Default') return { ...state, myFavorites: allCharacters }
     if (order === 'Ascendente') {
         return {
