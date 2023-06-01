@@ -10,7 +10,7 @@ server.use(cors())
 server.use('/', router)
 
 conn
-    .sync({ alter: true })
+    .sync({ force: true })
     .then(() => {
         server.listen(PORT, () => console.log(`Correindo en el puerto ${PORT}`))
     })
