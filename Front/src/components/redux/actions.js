@@ -8,13 +8,26 @@ export const GET_FAV = 'GET_FAV'
 export const FILTER_FAVORITES = 'FILTER_FAVORITES'
 export const GENDER_ORDER = 'GENDER_ORDER'
 export const NAV_BACKGROUND = 'NAV_BACKGROUND'
+export const HANDLER_SESSION = 'HANDLER_SESSION'
+export const SESSION_CLOSE = 'SESSION_CLOSE'
 
 const URL_BASE = 'http://localhost:3001'
 const KEY = '179180d9d086.4e91a167f3c86bcbbb24';
-export const getFavorites = (gender, order) => {
+
+export const handlerSession = (email) => {
+    return {type: HANDLER_SESSION, payload: email}
+}
+
+export const sessionClose = () => {
+    return {type: SESSION_CLOSE}
+}
+
+export const getFavorites = (gender, order, email) => {
     return async function (dispatch) {
-        const response = await axios(`${URL_BASE}/rickandmorty/fav`)
-        dispatch({ type: GET_FAV, payload: { response: response.data, gender, order } })
+        const user = await axios(`user?email=${email}`)
+        const favorites = user.data.Favorites
+        console.log(favorites)
+        dispatch({ type: GET_FAV, payload: { response: user.data.Favorites, gender, order } })
     }
 }
 

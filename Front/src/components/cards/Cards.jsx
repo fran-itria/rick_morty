@@ -9,6 +9,9 @@ export default function Cards({ characters, onClose }) {
     useEffect(() =>{
         dispatch(navBackground('Cards'))
     }, [])
+    useEffect(() =>{
+        console.log(characters)
+    }, [characters])
    return (
       <div className={style.contenedor}>
          {characters.length == 0 ?
@@ -24,6 +27,8 @@ export default function Cards({ characters, onClose }) {
                      species={character.species}
                      gender={character.gender}
                      image={character.image}
+                     origin={character.origin}
+                     status={character.status}
                      id={character.id}
                      onClose={onClose}
                   />
