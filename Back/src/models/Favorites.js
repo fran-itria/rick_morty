@@ -9,11 +9,15 @@ module.exports = (sequelize) => {
         },
         name: {
             type: DataTypes.STRING,
-            unique: true,
             allowNull: false,
         },
         gender: {
             type: DataTypes.STRING,
+            allowNull: false
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true
         },
         status: {
             type: DataTypes.ENUM("Alive", "Dead", "Unknown"),
@@ -22,10 +26,13 @@ module.exports = (sequelize) => {
         origin: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
         },
         species: {
             type: DataTypes.STRING,
         },
+        userId: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
     }, { timestamps: false });
 };
