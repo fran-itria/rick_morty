@@ -7,8 +7,9 @@ const getCharById = (req, res) => {
     const { id } = req.params
     axios(`${URL_BASE}/${id}?key=${KEY}`)
         .then(response => {
-            const { id, name, species, gender, image } = response.data
-            res.status(200).json({ id, name, species, gender, image })
+            const { id, name, species, gender, image, status } = response.data
+            let origin = response.data.origin.name
+            res.status(200).json({ id, name, species, gender, image, origin, status })
         })
         .catch(error => {
             res.status(500).json({ error: error.message })
