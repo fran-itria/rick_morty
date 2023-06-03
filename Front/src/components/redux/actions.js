@@ -25,8 +25,6 @@ export const sessionClose = () => {
 export const getFavorites = (gender, order, email) => {
     return async function (dispatch) {
         const user = await axios(`user?email=${email}`)
-        const favorites = user.data.Favorites
-        console.log(favorites)
         dispatch({ type: GET_FAV, payload: { response: user.data.Favorites, gender, order } })
     }
 }

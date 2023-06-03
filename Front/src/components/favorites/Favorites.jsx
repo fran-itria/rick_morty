@@ -25,9 +25,9 @@ export default function Favorites(props) {
     setOrden(event.target.value);
     dispatch(filterFavorites(gender, event.target.value));
   };
-  const removeFavorite = async (id) => {
-    await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
-    dispatch(getFavorites(filters.gender, filters.order));
+  const removeFavorite = async (name) => {
+    await axios.delete(`fav/${name}`);
+    dispatch(getFavorites(filters.gender, filters.order, email));
   };
   useEffect(() => {
     dispatch(getFavorites(filters.gender, filters.order, email));
@@ -101,7 +101,7 @@ export default function Favorites(props) {
               <div className={style.container} key={character.id}>
                 <div className={style.information}>
                   <button
-                    onClick={() => removeFavorite(character.id)}
+                    onClick={() => removeFavorite(character.name)}
                     className={style.fav}
                   >
                     ❤️

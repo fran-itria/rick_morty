@@ -18,11 +18,23 @@
     background-attachment: fixed;
 }
 
+.buttonCloseSession {
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(255, 112, 112);
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    left: 20px;
+    border-top: red solid 3px;
+}
+.buttonCloseSession:hover{
+    cursor: pointer;
+}
+
 .search {
     position: absolute;
     right: 20px;
-    /* top: 10px; */
-    /* margin-top: 10px; */
 }
 
 .about {

@@ -16,7 +16,7 @@ export default function Nav({ onSearch, characters, setCharacters, setAccess, na
     return (
         <div className={background == 'About' ? style.About : style.Cards}>
             <div>
-                <button onClick={() => handleSession()}>Cerrar sesión</button>
+                <button onClick={() => handleSession()} className={style.buttonCloseSession}>Cerrar sesión</button>
             </div>
             <div className={style.about}>
                 <NavLink to='/about' className={({ isActive }) => isActive ? style.active : style.disable}>About</NavLink>

@@ -9,9 +9,6 @@ export default function Cards({ characters, onClose }) {
     useEffect(() =>{
         dispatch(navBackground('Cards'))
     }, [])
-    useEffect(() =>{
-        console.log(characters)
-    }, [characters])
    return (
       <div className={style.contenedor}>
          {characters.length == 0 ?
